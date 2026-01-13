@@ -16,7 +16,7 @@
     <!-- Lucide Icons (CDN) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Tailwind Config for Custom Colors -->
+    <!-- Tailwind Config for Custom Colors & Screen Optimization -->
     <script>
         tailwind.config = {
             theme: {
@@ -24,6 +24,9 @@
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
                         serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    screens: {
+                        'laptop': '1366px',
                     },
                     colors: {
                         'el-wood': '#8b934e',
@@ -66,6 +69,20 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
+        /* 針對桌機/筆電收緊 Container Max-Width */
+        .app-container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        @media (min-width: 768px) { .app-container { padding-left: 3rem; padding-right: 3rem; } }
+        @media (min-width: 1024px) { .app-container { max-width: 1000px; } }
+        @media (min-width: 1280px) { .app-container { max-width: 1140px; } }
+        @media (min-width: 1366px) { .app-container { max-width: 1200px; } }
+        @media (min-width: 1536px) { .app-container { max-width: 1320px; } }
+
         /* Game Tile Styles */
         .tile-card {
             background-color: #ffffff;
@@ -91,7 +108,7 @@
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 bg-transparent">
-        <div class="container mx-auto px-6 md:px-12 lg:px-20 flex justify-between items-center text-stone-800 transition-colors duration-300" id="nav-container">
+        <div class="app-container flex justify-between items-center text-stone-800 transition-colors duration-300" id="nav-container">
             <!-- Logo -->
             <div class="flex items-center space-x-2 cursor-pointer group" onclick="scrollToTop()">
                 <img src="https://img.shoplineapp.com/media/image_clips/693fd310ce43e58dabfdaa56/original.png?1765790479=&owner_id=5caf39294d91a10001727c79" alt="Logo" class="w-10 h-10 object-contain">
@@ -129,30 +146,30 @@
     </nav>
 
     <!-- Wood Hero Section -->
-    <section id="hero" class="relative w-full min-h-[90vh] flex flex-col justify-start overflow-hidden bg-stone-100 pt-36 md:pt-44 lg:pt-60 pb-20 scroll-mt-28">
+    <section id="hero" class="relative w-full min-h-[90vh] laptop:min-h-[80vh] flex flex-col justify-start overflow-hidden bg-stone-100 pt-36 md:pt-40 lg:pt-48 laptop:pt-36 pb-20 scroll-mt-28">
         <!-- Background Texture & Decoration -->
         <div class="absolute inset-0 z-0 bg-wood-pattern opacity-50 pointer-events-none"></div>
         <div class="absolute top-0 right-0 w-1/2 h-full bg-el-wood/10 -skew-x-12 translate-x-32 z-0 hidden md:block pointer-events-none"></div>
         <div class="absolute bottom-[-100px] left-[-100px] w-96 h-96 bg-el-wood/20 rounded-full blur-[80px] pointer-events-none"></div>
 
-        <div class="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+        <div class="app-container relative z-10">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 
                 <!-- Left: Character & Title -->
                 <div class="flex flex-col items-center md:items-start space-y-8 animate-fade-in-up">
                     <div class="relative group cursor-default">
                         <!-- Huge Kanji -->
-                        <span class="font-serif text-[180px] md:text-[280px] leading-none text-el-wood opacity-90 select-none drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 inline-block">木</span>
+                        <span class="font-serif text-[180px] md:text-[240px] laptop:text-[260px] leading-none text-el-wood opacity-90 select-none drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 inline-block">木</span>
                         <!-- Decorative ring -->
                         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-el-wood/30 rounded-full animate-pulse-slow pointer-events-none"></div>
                     </div>
                 </div>
 
                 <!-- Right: Attributes -->
-                <div class="space-y-12 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="space-y-10 animate-fade-in-up" style="animation-delay: 0.2s;">
                     <div class="space-y-6 border-l-4 border-el-wood pl-8">
                         <div class="space-y-2 group">
-                            <h2 class="text-2xl font-serif text-stone-500 tracking-widest">
+                            <h2 class="text-xl lg:text-2xl font-serif text-stone-500 tracking-widest">
                                 生命靈數
                             </h2>
                             <p class="text-4xl md:text-5xl font-bold text-stone-800 font-serif group-hover:text-el-wood transition-colors">1 號人</p>
@@ -161,13 +178,13 @@
                         <!-- 臟腑與情緒 Grid 並排 -->
                         <div class="grid grid-cols-2 gap-8">
                             <div class="space-y-2 group">
-                                <h2 class="text-2xl font-serif text-stone-500 tracking-widest">
+                                <h2 class="text-xl lg:text-2xl font-serif text-stone-500 tracking-widest">
                                     對應臟腑
                                 </h2>
                                 <p class="text-4xl md:text-5xl font-bold text-stone-800 font-serif group-hover:text-el-wood transition-colors">肝</p>
                             </div>
                             <div class="space-y-2 group">
-                                <h2 class="text-2xl font-serif text-stone-500 tracking-widest">
+                                <h2 class="text-xl lg:text-2xl font-serif text-stone-500 tracking-widest">
                                     對應情緒
                                 </h2>
                                 <p class="text-4xl md:text-5xl font-bold text-stone-800 font-serif group-hover:text-el-wood transition-colors">憤怒</p>
@@ -175,7 +192,7 @@
                         </div>
                     </div>
                     
-                    <div class="pt-4">
+                    <div class="pt-2">
                         <button data-target="wood-eyes-game" class="scroll-trigger inline-flex items-center gap-3 bg-el-wood hover:bg-stone-800 text-white px-8 py-4 rounded-full text-lg font-bold tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                             <i data-lucide="gamepad-2" class="w-5 h-5"></i>
                             <span>立即體驗遊戲</span>
@@ -186,7 +203,7 @@
         </div>
         
         <!-- Scroll Hint -->
-        <div class="absolute bottom-12 md:bottom-28 lg:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-el-wood cursor-pointer scroll-trigger" data-target="personality">
+        <div class="absolute bottom-8 md:bottom-20 lg:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-el-wood cursor-pointer scroll-trigger" data-target="personality">
             <span class="text-xs tracking-widest mb-2">向下探索</span>
             <i data-lucide="arrow-right" class="w-5 h-5 rotate-90"></i>
         </div>
@@ -194,7 +211,7 @@
 
     <!-- Personality Section -->
     <section id="personality" class="py-24 bg-white relative scroll-mt-28">
-        <div class="container mx-auto px-6 md:px-12 lg:px-20">
+        <div class="app-container">
             <div class="flex flex-col md:flex-row gap-12 items-start">
                 
                 <!-- Header -->
@@ -232,7 +249,7 @@
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-el-wood to-emerald-800 opacity-30"></div>
         <div class="absolute -left-20 top-40 w-80 h-80 bg-el-wood/10 rounded-full blur-3xl"></div>
         
-        <div class="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+        <div class="app-container relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-4 flex items-center justify-center gap-3">
                     <span class="w-2 h-8 bg-el-wood block rounded-full"></span>
@@ -321,7 +338,7 @@
 
     <!-- Care Section -->
     <section id="care" class="py-24 bg-white relative scroll-mt-28">
-        <div class="container mx-auto px-6 md:px-12 lg:px-20 space-y-24">
+        <div class="app-container space-y-24">
             
             <!-- Title -->
             <div class="text-center">
@@ -491,7 +508,7 @@
     <section id="wood-eyes-game" class="py-24 bg-stone-100 relative overflow-hidden scroll-mt-28">
         <div class="absolute -right-20 top-20 w-80 h-80 bg-el-wood/10 rounded-full blur-3xl"></div>
         
-        <div class="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
+        <div class="app-container relative z-10">
              <div class="bg-white rounded-[3rem] p-8 md:p-16 shadow-xl border border-stone-200 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
                 <div class="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                 
@@ -579,7 +596,7 @@
 
     <!-- Footer -->
     <footer id="footer" class="bg-stone-900 text-stone-400 py-16 mt-auto">
-        <div class="container mx-auto px-6 md:px-12 lg:px-20">
+        <div class="app-container">
             <div class="grid md:grid-cols-4 gap-12 mb-12 border-b border-stone-800 pb-12">
                 <div class="col-span-1 md:col-span-2 space-y-4">
                     <h3 class="text-white text-2xl md:text-3xl lg:text-4xl font-serif">2026 台灣精油芳療年會</h3>
