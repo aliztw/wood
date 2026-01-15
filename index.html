@@ -576,7 +576,7 @@
                 <div class="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
                 
                 <div class="w-full md:w-1/2 relative z-10">
-                    <div class="bg-[#fcfaf5] p-6 md:p-8 rounded-[2rem] shadow-inner border border-stone-200 cursor-pointer group hover:scale-[1.02] transition-transform duration-500 relative overflow-hidden" onclick="window.open('https://rabb31k.github.io/wood-game/', '_blank')">
+                    <div class="bg-[#fcfaf5] p-6 md:p-8 rounded-[2rem] shadow-inner border border-stone-200 cursor-pointer group hover:scale-[1.02] transition-transform duration-500 relative overflow-hidden" onclick="window.open('https://aliztw.github.io/wood-game/', '_blank')">
                         <div class="grid grid-cols-6 gap-2 md:gap-3 game-grid">
                             <div class="aspect-square tile-card text-2xl md:text-3xl select-none">材</div>
                             <div class="aspect-square tile-card text-2xl md:text-3xl select-none">材</div>
@@ -646,7 +646,7 @@
                          <strong>透過文字挑戰</strong> ，測試你的眼力與專注力！
                      </p>
                      <div class="pt-4 flex flex-col items-center md:items-start">
-                         <a href="https://rabb31k.github.io/wood-game/" target="_blank" class="inline-flex items-center gap-3 bg-stone-800 hover:bg-el-wood text-white px-8 py-4 rounded-full text-lg font-bold tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                         <a href="https://aliztw.github.io/wood-game/" target="_blank" class="inline-flex items-center gap-3 bg-stone-800 hover:bg-el-wood text-white px-8 py-4 rounded-full text-lg font-bold tracking-wider transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                              <i data-lucide="gamepad-2" class="w-5 h-5"></i>
                              <span>進入遊戲</span>
                          </a>
@@ -735,7 +735,16 @@
                          mobileMenuBtn.innerHTML = '<i data-lucide="menu"></i>';
                          lucide.createIcons();
                     }
-                    targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                    
+                    // 手動修正捲動：精確計算目標元素的絕對位置並扣除導覽列高度
+                    const navHeight = navbar.offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
                 }
             };
 
